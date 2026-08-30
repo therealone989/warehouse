@@ -5,13 +5,16 @@ public class MovementPlayer : MonoBehaviour
 {
     [Header("Bewegungsvariablen")]
     [SerializeField] private float speed = 10f;
-    
+    [SerializeField] private float sprintSpeed = 14f;
+
     [SerializeField] private Transform movementReference;
 
     private Rigidbody rb;
 
     private Vector2 moveInput;
     private Vector3 movementForce;
+
+    private bool isSprinting;
 
     void Awake()
     {
@@ -40,7 +43,9 @@ public class MovementPlayer : MonoBehaviour
 
     private void Move()
     {
-        Vector3 velocity = movementForce * speed;
+        float currentSpeed = isSprinting ? sprintSpeed : speed;
+
+        Vector3 velocity = movementForce * currentSpeed;
 
         rb.linearVelocity = new Vector3(
             velocity.x,
@@ -53,5 +58,18 @@ public class MovementPlayer : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isSprinting = true;
+        }
+
+        if (context.canceled)
+        {
+            isSprinting = false;
+        }
     }
 }
