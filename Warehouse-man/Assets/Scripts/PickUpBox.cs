@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+
 public class PickUpBox : MonoBehaviour
 {
     [Header("Attributes Raycast")]
@@ -37,14 +37,23 @@ public class PickUpBox : MonoBehaviour
         DropOff();
         if (hasBox) return;
         PickUp();
+        BoxCheck();
+    }
 
+    // Checkt Ray collision und Switcht Modes.
+    public void BoxCheck()
+    {
+        // Hier checken wir ob unser hit ein Collider trifft.
         if (hit.collider == null)
         {
             crosshair.color = Color.white;
             pickUpText.SetActive(false);
+            // Box die wir gerade anschauen um die richtige box in der hand zu aktivieren // deaktivieren.
+            // Hier gibt es kein Collider deswegen keine Schleifen durchlauf (Iteration).
             currentBox = null;
             return;
         }
+        // Wenn unser Ray ein collider hittet, dann switchen wir durch die tags.
         switch (hit.collider.tag)
         {
             case "Brown":
@@ -66,6 +75,9 @@ public class PickUpBox : MonoBehaviour
                 break;
         }
     }
+
+    // Allgemeine Methode um die Farbe zu wechseln und Pickup Text zu steuern.
+    // Bestimmt die box die wir anschauen als currentBox.
     public void SwitchMode(Color color,bool setActive)
     {
         crosshair.color = color;
@@ -79,7 +91,9 @@ public class PickUpBox : MonoBehaviour
         Physics.Raycast(ray, out hit, distance);
         if (!hasBox && Input.GetKeyDown(KeyCode.E))
         {
+            // Wenn Spieler keine Box anschaut raus aus der Methode.
             if (currentBox == null) return;
+
             // RICHTIGE BOX AKTIVIEREN
             for (int i = 0; i < boxes.Length; i++)
             {
@@ -91,6 +105,7 @@ public class PickUpBox : MonoBehaviour
                     pickUpText.SetActive(false);
                     boxes[i].SetActive(true);
                     holdingBox = boxes[i];
+                    // Resettet Hit weil sonst wird der letzte hit gespeichert und der Text bleibt aktiv.
                     hit = new RaycastHit();
                     droppingBox = prefabBoxes[i];
                     Destroy(currentBox);
@@ -114,6 +129,5 @@ public class PickUpBox : MonoBehaviour
             
         }
     }
-
 
 }
