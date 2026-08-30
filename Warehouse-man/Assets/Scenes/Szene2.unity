@@ -1703,8 +1703,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2086539646}
+  m_Children: []
   m_Father: {fileID: 1823991315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303833572
@@ -2048,8 +2047,8 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 0
-  BlendUpdateMethod: 0
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
     DefaultMode: 2
@@ -11943,6 +11942,8 @@ GameObject:
   - component: {fileID: 1823991312}
   - component: {fileID: 1823991316}
   - component: {fileID: 1823991317}
+  - component: {fileID: 1823991318}
+  - component: {fileID: 1823991319}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -12070,7 +12071,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1823991317
 MonoBehaviour:
@@ -12084,8 +12085,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded148d77bd4174fbcd68f067a6c26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Movement
-  moveSpeed: 5
-  mouseSensitivity: 2
+  moveSpeed: 12
+  cameraTransform: {fileID: 2086539646}
+--- !u!114 &1823991318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823991311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 764bf5b4a958b5f41b823a9b430b1bf3, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1823991317}
+        m_TargetAssemblyTypeName: Player_Movement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac9c1ec6-75a1-43d1-8c04-cf3259a10ad0
+    m_ActionName: Player/Move
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1823991319}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 53986483-562c-497a-ab1b-7938aadb26b9
+    m_ActionName: 'Player/Look[/Mouse/delta]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1823991319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823991311}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6bca6e343788d4db2497654815a16e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  sensibility: 1
   head: {fileID: 301006618}
 --- !u!1001 &1824453323
 PrefabInstance:
@@ -13875,6 +13951,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2086539646}
   - component: {fileID: 2086539645}
+  - component: {fileID: 2086539647}
+  - component: {fileID: 2086539649}
+  - component: {fileID: 2086539648}
   m_Layer: 0
   m_Name: CM_FP_Cam
   m_TagString: Untagged
@@ -13934,12 +14013,104 @@ Transform:
   m_GameObject: {fileID: 2086539644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 301006618}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086539647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086539644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineHardLockToTarget
+  Damping: 0
+--- !u!114 &2086539648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086539644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineInputAxisController
+  ScanRecursively: 1
+  SuppressInputWhileBlending: 1
+  IgnoreTimeScale: 0
+  m_ControllerManager:
+    Controllers:
+    - Name: Look X (Pan)
+      Owner: {fileID: 2086539649}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: -7895590504102879757, guid: 764bf5b4a958b5f41b823a9b430b1bf3, type: 3}
+        Gain: 5
+        LegacyInput: Mouse X
+        LegacyGain: 200
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+    - Name: Look Y (Tilt)
+      Owner: {fileID: 2086539649}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: -7895590504102879757, guid: 764bf5b4a958b5f41b823a9b430b1bf3, type: 3}
+        Gain: -5
+        LegacyInput: Mouse Y
+        LegacyGain: -200
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+--- !u!114 &2086539649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086539644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePanTilt
+  ReferenceFrame: 0
+  RecenterTarget: 0
+  PanAxis:
+    Value: 0
+    Center: 0
+    Range: {x: -180, y: 180}
+    Wrap: 1
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
+  TiltAxis:
+    Value: 0
+    Center: 0
+    Range: {x: -70, y: 70}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
 --- !u!1 &2097611407
 GameObject:
   m_ObjectHideFlags: 0
@@ -14590,7 +14761,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1280090852}
@@ -14606,3 +14776,5 @@ SceneRoots:
   - {fileID: 846088056}
   - {fileID: 219281230}
   - {fileID: 1823991315}
+  - {fileID: 2086539646}
+  - {fileID: 330585546}
