@@ -24,7 +24,12 @@ public class Player_Movement : MonoBehaviour
     {
         Vector3 move = cameraTransform.forward * moveInput.y + cameraTransform.right * moveInput.x;
         move.y = 0f;
-        rb.AddForce(move.normalized * moveSpeed, ForceMode.Force);
+        rb.linearVelocity = new Vector3(
+            move.x * moveSpeed,
+            rb.linearVelocity.y,
+            move.z * moveSpeed
+        );
+        // rb.AddForce(move.normalized * moveSpeed, ForceMode.Force);
     }
 
     public void OnMove(InputAction.CallbackContext context)
