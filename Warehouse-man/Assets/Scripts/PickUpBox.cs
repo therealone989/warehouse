@@ -6,6 +6,7 @@ public class PickUpBox : MonoBehaviour
 {
     [Header("Attributes Raycast")]
     public float distance = 2f;
+    public float throwStrengh = 2f;
 
     [Header("UI")]
     public Image crosshair;
@@ -104,6 +105,8 @@ public class PickUpBox : MonoBehaviour
             
             GameObject spawnedBox = Instantiate(droppingBox, shootPoint.transform.position, shootPoint.localRotation);
             spawnedBox.SetActive(true);
+            Rigidbody boxRb = spawnedBox.GetComponent<Rigidbody>();
+            boxRb.AddRelativeForce(transform.forward * throwStrengh,ForceMode.Impulse);
             holdingBox.SetActive(false);
             holdingBox = null;
             hasBox = false;

@@ -9875,6 +9875,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 193703622}
     - target: {fileID: 7058154014148455666, guid: 962a95bc12f34584291d45565a9c1c3f, type: 3}
+      propertyPath: throwStrengh
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058154014148455666, guid: 962a95bc12f34584291d45565a9c1c3f, type: 3}
       propertyPath: 'boxes.Array.data[0]'
       value: 
       objectReference: {fileID: 679356073}
