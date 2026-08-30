@@ -9,15 +9,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textYellow;
     [SerializeField] TextMeshProUGUI textBlue;
 
-    int brownMission;
-    int greenMission;
-    int yellowMission;
-    int blueMission;
+    public int brownMission;
+    public int greenMission;
+    public int yellowMission;
+    public int blueMission;
 
     public int brownBox = 0;
     public int greenBox = 0;
     public int yellowBox = 0;
     public int blueBox = 0;
+
+    private bool hasCompletedMissions;
 
     void Start()
     {
@@ -28,18 +30,31 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
         textBrown.text = "Braune Boxen: " + brownBox + "/" + brownMission;
         textGreen.text = "Grüne Boxen: " + greenBox + "/" + greenMission;
         textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
         textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
+
+        if(brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
+        {
+            SetMission();
+        }
+
+   
     }
 
     public void SetMission()
     {
-        brownMission = Random.Range(2, 10);
-        greenMission = Random.Range(2, 10);
-        yellowMission = Random.Range(2, 10);
-        blueMission = Random.Range(2, 10);
+        brownBox = 0;
+        greenBox = 0;
+        yellowBox = 0;
+        blueBox = 0;
+
+        brownMission = Random.Range(2, 4);
+        greenMission = Random.Range(2, 4);
+        yellowMission = Random.Range(2, 4);
+        blueMission = Random.Range(2, 4);
     }
 
 }

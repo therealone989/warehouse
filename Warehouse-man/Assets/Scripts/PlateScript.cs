@@ -22,18 +22,22 @@ public class PlateScript : MonoBehaviour
             switch (collision.gameObject.tag)
             {
                 case "Brown":
+                    if (gameManager.brownBox == gameManager.brownMission) return;
                     gameManager.brownBox++;
                     Destroy(collision.gameObject);
                     break;
                 case "Green":
+                    if (gameManager.greenBox == gameManager.greenMission) return;
                     gameManager.greenBox++;
                     Destroy(collision.gameObject);
                     break;
                 case "Yellow":
+                    if (gameManager.yellowBox == gameManager.yellowMission) return;
                     gameManager.yellowBox++;
                     Destroy(collision.gameObject);
                     break;
                 case "Blue":
+                    if (gameManager.blueBox == gameManager.blueMission) return;
                     gameManager.blueBox++;
                     Destroy(collision.gameObject);
                     break;

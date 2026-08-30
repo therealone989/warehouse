@@ -12240,6 +12240,10 @@ MonoBehaviour:
   textGreen: {fileID: 1221642921}
   textYellow: {fileID: 1508367271}
   textBlue: {fileID: 450782921}
+  brownMission: 0
+  greenMission: 0
+  yellowMission: 0
+  blueMission: 0
   brownBox: 0
   greenBox: 0
   yellowBox: 0
