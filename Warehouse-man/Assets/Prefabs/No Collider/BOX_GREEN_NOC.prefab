@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8142537161003008638}
   - component: {fileID: 3769187182098534364}
   - component: {fileID: 6436439849261705686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2020708043408252737}
   - component: {fileID: 4853270178048839018}
   - component: {fileID: 3036023135147747686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box_Strip_Down
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 6268168753530676821}
   - component: {fileID: 294289133532168420}
   - component: {fileID: 6890658771718068362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box_Strip_Up
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5370321529311732733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BOX_GREEN_NOC
   m_TagString: Green
   m_Icon: {fileID: 0}

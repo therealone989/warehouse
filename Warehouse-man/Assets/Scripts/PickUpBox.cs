@@ -4,14 +4,24 @@ using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 public class PickUpBox : MonoBehaviour
 {
+    [Header("Attributes Raycast")]
     public float distance = 2f;
+
+    [Header("UI")]
     public Image crosshair;
     public GameObject pickUpText;
+
+    [Header("Boxes and Shootpoint")]
+    [SerializeField] GameObject[] boxes = new GameObject[4];
+    [SerializeField] private Transform shootPoint;
+
+    [Header("Variables -Do not change-")]
+    [SerializeField] private bool hasBox = false;
     [SerializeField] private GameObject currentBox;
+    [SerializeField] private GameObject droppingBox;
+    [SerializeField] private GameObject holdingBox;
     private RaycastHit hit;
 
-    [SerializeField] private bool hasBox = false;
-    [SerializeField] GameObject[] boxes = new GameObject[4];
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,14 +32,15 @@ public class PickUpBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DropOff();
         if (hasBox) return;
-
         PickUp();
 
         if (hit.collider == null)
         {
             crosshair.color = Color.white;
             pickUpText.SetActive(false);
+            currentBox = null;
             return;
         }
         switch (hit.collider.tag)
@@ -64,7 +75,7 @@ public class PickUpBox : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         Physics.Raycast(ray, out hit, distance);
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!hasBox && Input.GetKeyDown(KeyCode.E))
         {
             if (currentBox == null) return;
             // RICHTIGE BOX AKTIVIEREN
@@ -77,11 +88,26 @@ public class PickUpBox : MonoBehaviour
                     crosshair.color = Color.white;
                     pickUpText.SetActive(false);
                     boxes[i].SetActive(true);
+                    holdingBox = boxes[i];
                     hit = new RaycastHit();
+                    droppingBox = currentBox;
                     currentBox = null;
                     return;
                 }
             }
+        }
+    }
+
+    public void DropOff()
+    {
+        if(hasBox && Input.GetKeyDown(KeyCode.E)) {
+            
+            GameObject spawnedBox = Instantiate(droppingBox, shootPoint.transform.position, shootPoint.localRotation);
+            spawnedBox.SetActive(true);
+            holdingBox.SetActive(false);
+            holdingBox = null;
+            hasBox = false;
+            
         }
     }
 
