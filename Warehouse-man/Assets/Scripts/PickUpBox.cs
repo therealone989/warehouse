@@ -14,6 +14,7 @@ public class PickUpBox : MonoBehaviour
 
     [Header("Boxes and Shootpoint")]
     [SerializeField] GameObject[] boxes = new GameObject[4];
+    [SerializeField] GameObject[] prefabBoxes = new GameObject[4];
     [SerializeField] private Transform shootPoint;
 
     [Header("Variables -Do not change-")]
@@ -91,8 +92,8 @@ public class PickUpBox : MonoBehaviour
                     boxes[i].SetActive(true);
                     holdingBox = boxes[i];
                     hit = new RaycastHit();
-                    droppingBox = currentBox;
-                    currentBox = null;
+                    droppingBox = prefabBoxes[i];
+                    Destroy(currentBox);
                     return;
                 }
             }
