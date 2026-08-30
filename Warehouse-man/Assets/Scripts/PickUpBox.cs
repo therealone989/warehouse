@@ -1,14 +1,17 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 public class PickUpBox : MonoBehaviour
 {
     public float distance = 2f;
     public Image crosshair;
     public GameObject pickUpText;
-    private GameObject currentBox;
+    [SerializeField] private GameObject currentBox;
     private RaycastHit hit;
+
+    [SerializeField] private bool hasBox = false;
+    [SerializeField] GameObject[] boxes = new GameObject[4];
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +22,10 @@ public class PickUpBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hasBox) return;
+
         PickUp();
+
         if (hit.collider == null)
         {
             crosshair.color = Color.white;
@@ -43,6 +49,7 @@ public class PickUpBox : MonoBehaviour
             default:
                 crosshair.color = Color.white;
                 pickUpText.SetActive(false);
+                currentBox = null;
                 break;
         }
     }
@@ -60,12 +67,21 @@ public class PickUpBox : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (currentBox == null) return;
-            if (currentBox.tag != null)
+            // RICHTIGE BOX AKTIVIEREN
+            for (int i = 0; i < boxes.Length; i++)
             {
-                currentBox.SetActive(false);
+                if(currentBox.CompareTag(boxes[i].tag))
+                {
+                    currentBox.SetActive(false);
+                    hasBox = true;
+                    crosshair.color = Color.white;
+                    pickUpText.SetActive(false);
+                    boxes[i].SetActive(true);
+                    hit = new RaycastHit();
+                    currentBox = null;
+                    return;
+                }
             }
-            else return;
-
         }
     }
 
