@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
 
@@ -57,28 +56,17 @@ public class Player_Movement : MonoBehaviour
 
         // Nur Head hoch/runter drehen
         head.localRotation = Quaternion.Euler(pitch, 0, 0);
+        transform.rotation = Quaternion.Euler(0, yaw, 0);
     }
 
     void FixedUpdate()
     {
-        // Zielrotation des Players
-        Quaternion rotation = Quaternion.Euler(0, yaw, 0);
-
-        rb.MoveRotation(rotation);
-
-
         // Lokale WASD Richtung
         Vector3 inputDirection = new Vector3(x, 0, z).normalized;
 
+        Vector3 moveDir = transform.rotation * inputDirection;
         // Richtung entsprechend Playerrotation drehen
-        Vector3 movement = rotation * inputDirection;
-
-
-        // Geschwindigkeit setzen
-        rb.linearVelocity = new Vector3(
-            movement.x * moveSpeed,
-            rb.linearVelocity.y,
-            movement.z * moveSpeed
-        );
+        Vector3 targetVelocity = rb.position + moveDir * moveSpeed * Time.deltaTime;
+        rb.MovePosition(targetVelocity);
     }
 }
