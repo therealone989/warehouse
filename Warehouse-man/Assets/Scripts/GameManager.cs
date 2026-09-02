@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
                 greenBox = 0;
                 yellowBox = 0;
                 blueBox = 0;
-                Debug.Log("GESCHAFFT!");
+                timeRunning = false;
                 return;
             }
             else
