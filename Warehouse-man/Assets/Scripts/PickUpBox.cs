@@ -24,6 +24,8 @@ public class PickUpBox : MonoBehaviour
     [SerializeField] private GameObject holdingBox;
     private RaycastHit hit;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

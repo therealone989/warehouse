@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textBlue;
 
     [SerializeField] TextMeshProUGUI textTimer;
+    [SerializeField] TextMeshProUGUI missonsCompletedText;
 
     [SerializeField] GameObject timer;
+
+    public int neededMissions = 3;
 
     public int brownMission;
     public int greenMission;
@@ -23,7 +26,8 @@ public class GameManager : MonoBehaviour
     public int yellowBox = 0;
     public int blueBox = 0;
 
-    private bool hasCompletedMissions;
+    public bool hasCompletedMissions;
+    int completedMissions;
 
     float timeRemaining = 300f;
     bool timeRunning = false;
@@ -40,17 +44,32 @@ public class GameManager : MonoBehaviour
     {
         CheckTimer();
         SetText();
-        if (brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
-        {
-            SetMission();
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartTimer();
-        }
-   
+        WinCondition();
+
     }
 
+    public void WinCondition()
+    {
+        if (hasCompletedMissions) return;
+        if (brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
+        {
+            completedMissions++;
+            if (completedMissions >= neededMissions)
+            {
+                hasCompletedMissions = true;
+                brownBox = 0;
+                greenBox = 0;
+                yellowBox = 0;
+                blueBox = 0;
+                Debug.Log("GESCHAFFT!");
+                return;
+            }
+            else
+            {
+                SetMission();
+            }
+        }
+    }
     public void CheckTimer()
     {
         if (timeRunning)
@@ -61,6 +80,10 @@ public class GameManager : MonoBehaviour
             {
                 timeRunning = false;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StartTimer();
         }
     }
     public void StartTimer()
@@ -88,5 +111,6 @@ public class GameManager : MonoBehaviour
         textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
         textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
         textTimer.text = "Verbliebende Zeit: " + Mathf.CeilToInt(timeRemaining);
+        missonsCompletedText.text = "Missionen: " + completedMissions + "/" + neededMissions;
     }
 }

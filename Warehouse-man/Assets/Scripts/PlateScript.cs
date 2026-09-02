@@ -17,6 +17,7 @@ public class PlateScript : MonoBehaviour
 
    private void OnCollisionEnter(Collision collision)
     {
+        if (gameManager.hasCompletedMissions) return;
         if (collision.gameObject.tag == gameObject.tag)
         {
             switch (collision.gameObject.tag)
