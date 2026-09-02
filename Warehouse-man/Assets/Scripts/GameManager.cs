@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textYellow;
     [SerializeField] TextMeshProUGUI textBlue;
 
+    [SerializeField] TextMeshProUGUI textTimer;
+
+    [SerializeField] GameObject timer;
+
     public int brownMission;
     public int greenMission;
     public int yellowMission;
@@ -21,29 +25,48 @@ public class GameManager : MonoBehaviour
 
     private bool hasCompletedMissions;
 
+    float timeRemaining = 300f;
+    bool timeRunning = false;
+
     void Start()
     {
         SetMission();
+        timer.SetActive(false);
     }
 
 
 
     private void Update()
     {
+        if (timeRunning)
+        {
+            timeRemaining -= Time.deltaTime;
 
+            if(timeRemaining <= 0)
+            {
+                timeRunning = false;
+            }
+        }
         textBrown.text = "Braune Boxen: " + brownBox + "/" + brownMission;
-        textGreen.text = "Grüne Boxen: " + greenBox + "/" + greenMission;
+        textGreen.text = "GrEe Boxen: " + greenBox + "/" + greenMission;
         textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
         textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
-
+        textTimer.text = "Time remaining: " + Mathf.CeilToInt(timeRemaining);
         if(brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
         {
             SetMission();
         }
-
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StartTimer();
+        }
    
     }
-
+    public void StartTimer()
+    {
+        timer.SetActive(true);
+        timeRunning = true;
+    }
     public void SetMission()
     {
         brownBox = 0;
