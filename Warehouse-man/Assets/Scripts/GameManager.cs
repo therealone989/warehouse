@@ -38,21 +38,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timeRunning)
-        {
-            timeRemaining -= Time.deltaTime;
-
-            if(timeRemaining <= 0)
-            {
-                timeRunning = false;
-            }
-        }
-        textBrown.text = "Braune Boxen: " + brownBox + "/" + brownMission;
-        textGreen.text = "GrEe Boxen: " + greenBox + "/" + greenMission;
-        textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
-        textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
-        textTimer.text = "Time remaining: " + Mathf.CeilToInt(timeRemaining);
-        if(brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
+        CheckTimer();
+        SetText();
+        if (brownBox == brownMission && greenBox == greenMission && yellowBox == yellowMission && blueBox == blueMission)
         {
             SetMission();
         }
@@ -61,6 +49,19 @@ public class GameManager : MonoBehaviour
             StartTimer();
         }
    
+    }
+
+    public void CheckTimer()
+    {
+        if (timeRunning)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining <= 0)
+            {
+                timeRunning = false;
+            }
+        }
     }
     public void StartTimer()
     {
@@ -80,4 +81,12 @@ public class GameManager : MonoBehaviour
         blueMission = Random.Range(2, 4);
     }
 
+    public void SetText()
+    {
+        textBrown.text = "Braune Boxen: " + brownBox + "/" + brownMission;
+        textGreen.text = "Gruene Boxen: " + greenBox + "/" + greenMission;
+        textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
+        textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
+        textTimer.text = "Verbliebende Zeit: " + Mathf.CeilToInt(timeRemaining);
+    }
 }

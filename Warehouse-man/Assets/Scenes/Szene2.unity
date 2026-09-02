@@ -1963,7 +1963,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2828,10 +2828,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Es fehlen noch Blau: 0/10'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
+  m_sharedMaterial: {fileID: -8295289697027667966, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5397,7 +5397,7 @@ GameObject:
   - component: {fileID: 846088054}
   - component: {fileID: 846088053}
   - component: {fileID: 846088057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boxplate04
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -8567,10 +8567,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Es fehlen noch Gr\xFCn: 0/10"
+  m_text: asdasda
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
+  m_sharedMaterial: {fileID: -8295289697027667966, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9174,10 +9174,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Es fehlen noch Braun: 0/10'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
+  m_sharedMaterial: {fileID: -8295289697027667966, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10325,10 +10325,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Es fehlen noch Gelb: 0/10'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
+  m_sharedMaterial: {fileID: -8295289697027667966, guid: 080b1b3a3e537d5459d0cff7d8478f7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10691,7 +10691,7 @@ GameObject:
   - component: {fileID: 1534773767}
   - component: {fileID: 1534773766}
   - component: {fileID: 1534773770}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boxplate01
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -12404,7 +12404,7 @@ GameObject:
   - component: {fileID: 1744933834}
   - component: {fileID: 1744933833}
   - component: {fileID: 1744933837}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boxplate03
   m_TagString: Yellow
   m_Icon: {fileID: 0}
@@ -12906,7 +12906,7 @@ GameObject:
   - component: {fileID: 1811437773}
   - component: {fileID: 1811437772}
   - component: {fileID: 1811437776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boxplate02
   m_TagString: Brown
   m_Icon: {fileID: 0}

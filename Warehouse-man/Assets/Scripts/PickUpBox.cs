@@ -44,7 +44,7 @@ public class PickUpBox : MonoBehaviour
     public void BoxCheck()
     {
         // Hier checken wir ob unser hit ein Collider trifft.
-        if (hit.collider == null)
+        if (hit.collider == null || hit.collider.gameObject.layer == 7)
         {
             crosshair.color = Color.white;
             pickUpText.SetActive(false);
