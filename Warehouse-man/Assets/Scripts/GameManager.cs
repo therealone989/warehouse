@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     public void SetText()
     {
         textBrown.text = "Braune Boxen: " + brownBox + "/" + brownMission;
-        textGreen.text = "GrÅuene Boxen: " + greenBox + "/" + greenMission;
+        textGreen.text = "Gruene Boxen: " + greenBox + "/" + greenMission;
         textYellow.text = "Gelbe Boxen: " + yellowBox + "/" + yellowMission;
         textBlue.text = "Blaue Boxen: " + blueBox + "/" + blueMission;
         textTimer.text = "Verbliebende Zeit: " + Mathf.CeilToInt(timeRemaining);
