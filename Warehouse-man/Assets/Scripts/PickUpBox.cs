@@ -17,11 +17,16 @@ public class PickUpBox : MonoBehaviour
     [SerializeField] GameObject[] prefabBoxes = new GameObject[4];
     [SerializeField] private Transform shootPoint;
 
+    [Header("Gamemanager")]
+    [SerializeField] private GameManager gameManager;
+
     [Header("Variables -Do not change-")]
     [SerializeField] private bool hasBox = false;
     [SerializeField] private GameObject currentBox;
     [SerializeField] private GameObject droppingBox;
     [SerializeField] private GameObject holdingBox;
+
+    
     private RaycastHit hit;
 
 
@@ -29,6 +34,7 @@ public class PickUpBox : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager.GetComponent<GameManager>();
         Camera cam = Camera.main;
         pickUpText.SetActive(false);
     }
@@ -36,6 +42,7 @@ public class PickUpBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.hasCompletedMissions) return;
         DropOff();
         if (hasBox) return;
         PickUp();
